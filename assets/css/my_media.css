@@ -1,0 +1,5 @@
+@media only screen
+and (max-width : 786px) {
+    .topbar .top-navbar .navbar-header{line-height: 55px !important;}
+    .topbar .navbar-collapse{min-height: 55px!important;}
+}

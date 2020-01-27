@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/images/favicon.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>fav.ico">
     <title>CBMC - <?= $title;?></title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>assets/css/module/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="" href="<?= base_url()?>">
+                    <a class="" href="<?= base_url("investor/files")?>">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
@@ -180,7 +180,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
 
-                        <li class="active"> <a class="has-arrow waves-effect waves-dark" href="<?= base_url()."files" ?>" aria-expanded="false"><i class="icon-Files"></i><span class="hide-menu">Files </span></a>
+                        <li class="active"> <a class="has-arrow waves-effect waves-dark active" href="<?= base_url()."investor/files" ?>" aria-expanded="false"><i class="icon-Files"></i><span class="hide-menu">Files </span></a>
                         </li>
                          <li> <a class="has-arrow waves-effect waves-dark" href="<?= base_url()."investor/manage_request" ?>" aria-expanded="false"><i class="icon-File-HorizontalText"></i><span class="hide-menu">Manage Request</span></a>
                         </li>

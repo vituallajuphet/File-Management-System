@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/images/favicon.png">
-    <title><?= $title;?></title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>fav.ico">
+    <title>CBMC <?= $title;?></title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>assets/css/module/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->

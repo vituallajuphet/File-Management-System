@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>fav.ico">
     <title><?= $title?></title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>assets/css/module/bootstrap.min.css" rel="stylesheet">
@@ -179,7 +179,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="has-arrow waves-effect waves-dark" href="<?= base_url("files")?>" aria-expanded="false"><i class="icon-Files"></i><span class="hide-menu">Files </span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="<?= base_url("investor/files")?>" aria-expanded="false"><i class="icon-Files"></i><span class="hide-menu">Files </span></a>
                         </li>
                          <li class="<?=($page_name == "InvestorRequest") ? "active" : "" ?>"> <a class="has-arrow waves-effect waves-dark active" href="#" aria-expanded="false"><i class="icon-File-HorizontalText"></i><span class="hide-menu">Manage Request</span></a>
                         </li>

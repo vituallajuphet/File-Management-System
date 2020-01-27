@@ -16,11 +16,8 @@
                             </ol>
                         </div>
                         <div class="col-md-7 align-self-center text-right d-none d-md-block">
-                            <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#responsive-modal" ><i class='fas fa-envelope' ></i> Send Message</button>
-                            <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#request-file-modal" ><i class='fas fa-file' ></i> Request a file</button>
-                            <!-- <button type="button" class="btn btn-theme model_img img-responsive"><i class='fas fa-envelope' data-toggle="modal" data-target="#responsive-modal" ></i> Request A File</button> -->
-                            <!-- <img src="../assets/images/alert/model.png" alt="default" data-toggle="modal" data-target="#responsive-modal" class="model_img img-responsive" /> -->
-
+                            <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#responsive-modal" ><i class='fas fa-envelope' ></i> Contact Department</button>
+                            <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#request-file-modal" ><i class='fas fa-file' ></i> Request a File</button>
                         </div>
                     </div>
                     <!-- ============================================================== -->
@@ -132,6 +129,14 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
+<!-- end modal -->
+
+<!-- add modal -->
+    <?php 
+        if(!empty($has_modal)){
+            $this->load->view($has_modal);
+        }  
+    ?>
 <!-- end modal -->
 
 </div>

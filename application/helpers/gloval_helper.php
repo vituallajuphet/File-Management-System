@@ -28,6 +28,14 @@
         exit;
     }
 
+    function get_user_id(){
+        $ci = & get_instance();
+        if($ci->session->has_userdata("user_id")){
+            return $ci->session->userdata("user_id");
+        }
+        exit;
+    }
+
     function sendemail($to_email="", $message ="", $from_name="", $subject="", $type="", $from_email=""){
         $ci = & get_instance();
         if(empty($to_email)){

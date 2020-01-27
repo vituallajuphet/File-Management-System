@@ -12,8 +12,9 @@ class Investor extends MY_Controller {
 		{
 			$data["title"] ="Investor Manage Requests";
 			$data["page_name"] ="InvestorRequest";
- 			$data['has_header']="Request_header.php";
-			$data['has_footer']="Request_footer.php";
+ 			$data['has_header']="Request_header";
+			$data['has_footer']="Request_footer";
+			$data['has_modal']="includes/investor/modal";
 		 	$this->load_investor_page('Request_index',$data);
 		}
 		// files page here
@@ -25,6 +26,9 @@ class Investor extends MY_Controller {
 					$department = explode("|",$_POST['department']);
 					sendemail($department[0], $message_content,"For ".$department[1],null,null,$_POST['your_email'],false);
 					$this->session->set_flashdata("flash_data", array( "err"=>"success", "message" => "Message Sent"));
+					$res = array('msg'=>'Message sent', 'err' => false);
+					$this->session->set_flashdata('results', $res );
+				
 			}
 			if (isset($_POST['send_request'])) {
 				$res=$this->db->
@@ -33,10 +37,14 @@ class Investor extends MY_Controller {
 				where('company_id',$this->session->userdata('company_id'))->
 				get()->result();
 				sendemail($res->company_email,'A user requested for a doocument.');
+
+				$this->MY_Model->insert('tbl_requests', $set);
+
 			}
 
 				$data['has_header']="files_index_header.php";
 				$data['has_footer']="files_index_footer.php";
+				$data['has_modal']="includes/investor/modal";
 			    $data["title"] = "Files";
 				$this->load->library('myconfig');
 				$data['viewable_files']=$this->myconfig->viewable_files();
@@ -54,6 +62,14 @@ class Investor extends MY_Controller {
 					select("*")->
 					where("company_id",$this->session->userdata('company_id'))->
 					from('tbl_companies')->get()->result();
+
+				// get companies
+				$par["select"] = "*";
+				$par["join"] = array("tbl_user_company"=> "tbl_companies.company_id = tbl_user_company.company_id") ;
+				$par["where"] = array( "tbl_user_company.user_id" => get_user_id(), "tbl_user_company.status"=>"joined" );
+				$data["comp"] = $this->MY_Model->getRows('tbl_companies',$par, "obj");
+				
+
 
       			$this->load_page('files_index',$data);
 		}
@@ -109,6 +125,20 @@ class Investor extends MY_Controller {
 				 echo json_encode($res);
 		}
 		
+
+		public function send_test(){
+			
+			// $nsg ="asdas asd asd";
+			// $res =	sendemail("prospteam@gmail.com",$nsg );
+			// if($res){
+			// 	echo 1;
+			// }
+			// else{
+			// 	echo 2;
+			// }
+
+		
+		}
 
 
 }

@@ -15,8 +15,8 @@
                     </ol>
                 </div>
                 <div class="col-md-7 align-self-center text-right d-none d-md-block">
-                    <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#responsive-modal" ><i class='fas fa-envelope' ></i> Send Message</button>
-                    <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#request-file-modal" ><i class='fas fa-file' ></i> Request a file</button>
+                    <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#responsive-modal" ><i class='fas fa-envelope' ></i> Contact Department</button>
+                    <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#request-file-modal" ><i class='fas fa-file' ></i> Request a File</button>
                     <!-- <button type="button" class="btn btn-theme model_img img-responsive"><i class='fas fa-envelope' data-toggle="modal" data-target="#responsive-modal" ></i> Request A File</button> -->
                     <!-- <img src="../assets/images/alert/model.png" alt="default" data-toggle="modal" data-target="#responsive-modal" class="model_img img-responsive" /> -->
 
@@ -31,15 +31,6 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-
-                    <?php
-
-                    // echo "<pre>";
-                    // print_r($_POST);
-                    // print_r($this->session->userdata());
-                    // echo "</pre>";
-                    // exit();
-                     ?>
 
                     <table id="example" class="table   dt-responsive nowrap " style="width:100%">
                     <!-- <table id="example" class="table " style="width:100%"> -->
@@ -57,7 +48,6 @@
 
                             foreach ($files_rows as $key => $value) {
                               echo "<tr>";
-                              // echo "<td>$value->files_id</td>";
                               echo "<td>$value->file_name</td>";
                               echo "<td>$value->file_department</td>";
                               echo "<td>$value->company_name</td>";
@@ -70,14 +60,6 @@
                             }
                              ?>
                         </tbody>
-                        <!-- <tfoot>
-                            <tr>
-                                <th>File Name</th>
-                                <th>Department</th>
-                                <th>Company</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot> -->
                     </table>
                   </div>
                 </div>

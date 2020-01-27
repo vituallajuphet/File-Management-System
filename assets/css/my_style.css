@@ -38,6 +38,8 @@ body{background-color: #f3f5ed;}
 .sidebar-nav ul li a.active, .sidebar-nav ul li a:hover{color: #c5a36f;}
 .sidebar-nav ul li a.active i, .sidebar-nav ul li a:hover i{color: #fff;}
 
+
+
 /* main area */
 .page-wrapper{background: #f3f5ed;}
 
@@ -92,6 +94,10 @@ body{background-color: #f3f5ed;}
     position: relative;
     height: auto!important;
 }
+
+.btn-default{border: 1px solid #e3d0d0!important;}
+.btn-default:hover{opacity: .6;}
+
 #verticalcenter .attached-file{}
 #verticalcenter .attached-file a { display: inline-block; background: #f0cca6; padding: 1px 11px; font-size: 15px; color: #222; border-radius: 5px; text-decoration: none; margin-right: 5px;}
 #verticalcenter .attached-file a i{font-size: 11px; color: #3c3c3c;}

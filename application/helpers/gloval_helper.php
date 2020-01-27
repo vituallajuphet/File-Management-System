@@ -8,10 +8,25 @@
         exit;
     }
 
-    // function send_to_company_email($value='')
-    // {
-    //
-    // }
+    function check_module(){
+        $ci = & get_instance();
+        $route = $ci->router->fetch_class();
+        $user_type = $ci->session->userdata("user_type");
+        $allowpage = ["login", "register", "logout", "files", "home"];
+        if(!in_array($route, $allowpage)){
+            if(!empty($user_type)){
+                if($user_type == $route){
+                    return 1;
+                }
+                else{
+                    return 2;
+                }
+            }
+        }
+        return 3;
+        
+        exit;
+    }
 
     function sendemail($to_email="", $message ="", $from_name="", $subject="", $type="", $from_email=""){
         $ci = & get_instance();

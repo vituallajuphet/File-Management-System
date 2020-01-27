@@ -3,7 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Files extends MY_Controller {
 
-		public function index(){
+	  	public function index(){
+			redirect(base_url("investor/files"));
+			exit;
 			if (isset($_POST['send_message'])) {
 					// $this->emaillibrary->sendmail($_POST['message-text']);
 					$message_content ="Investor name:".$this->session->userdata('firstname')." ".$this->session->userdata('lastname')."<br>";
@@ -44,12 +46,8 @@ class Files extends MY_Controller {
 					where("company_id",$this->session->userdata('company_id'))->
 					from('tbl_companies')->get()->result();
 
-
       			  $this->load_page('files_index',$data);
 
 		}
-
-
-
 
 }

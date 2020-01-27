@@ -5,15 +5,23 @@ class MY_Controller extends MX_Controller {
 
 	public function __construct(){
 		$route = $this->router->fetch_class();
-		if($route == 'login'){
-			if($this->session->has_userdata('is_logged')){
-				redirect(base_url());
-			}
-		} else {
-			if(!$this->session->has_userdata('is_logged')){
-				redirect(base_url('login'));
+		if(check_module() == 2){
+			echo "<p style='text-align: center;  font-size: 20px;  margin: 30px 0 0;  color: red;'>You are not authorize to access this page.</p> ";
+			
+			exit;
+		}
+		else if(check_module() == 3){
+			if($route == 'login'){
+				if($this->session->has_userdata('is_logged')){
+					redirect(base_url());
+				}
+			} else {
+				if(!$this->session->has_userdata('is_logged')){
+					redirect(base_url('login'));
+				}
 			}
 		}
+		
 	}
 
 	public function load_page($page,$data = array()){

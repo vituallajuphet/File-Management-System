@@ -4,17 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Home extends MY_Controller {
 
 		public function index(){
-			// $this->load->view('welcome_message');
-			// $this->load->view('blank_page');
 			$user_type = $this->session->userdata("user_type");
 			if($user_type == "investor"){
-				redirect(base_url("files"));
+				redirect(base_url("investor"));
 			}
-			if($user_type == "investor"){
+			if($user_type == "admin"){
 				redirect(base_url("admin"));
+			}
+			else{
+				redirect(base_url("login"));
 
 			}
-		    $this->load_page('blank_page');
 
 		}
 

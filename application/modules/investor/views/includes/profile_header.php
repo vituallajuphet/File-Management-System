@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>fav.ico">
-    <title><?= $title?></title>
+   <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>fav.ico">
+    <title>CBMC - <?= $title;?></title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url(); ?>assets/css/module/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -26,7 +26,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-
+<link rel="shortcut icon" href="<?= base_url(); ?>/fav.ico">
     <?php
         if(isset($has_header)){
 			$this->load->view($has_header);
@@ -34,7 +34,7 @@
     ?>
 </head>
 
-<body class="fix-header card-no-border fix-sidebar">
+<body class="fix-header card-no-border fix-sidebar" id="cbmc_body">
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -57,7 +57,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="" href="<?=base_url()?>">
+                    <a class="" href="<?= base_url("investor/files")?>">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
@@ -147,15 +147,15 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown u-pro">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>assets/images/dummyprofile.png" alt="user" class="" /> <span class="hidden-md-down"><?= $this->session->userdata("firstname") ." ". $this->session->userdata("lastname"); ?> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="<?=base_url("investor/profile")?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>assets/images/dummyprofile.png" alt="user" class="" /> <span class="hidden-md-down"><?= $this->session->userdata("firstname") ." ". $this->session->userdata("lastname"); ?> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
                                             <div class="u-text">
-                                                <a  href="<?=base_url("investor/profile")?>" class="nav-profile">
+                                                <a href="<?=base_url("investor/profile")?>" class="nav-profile">
                                                     <h4>My Profile</h4>
-                                                    <p>sample@email.com</p>
+                                                    <p>Dummy text only</p>
                                                 </a>
                                            </div>
                                     </li>
@@ -179,9 +179,10 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="has-arrow waves-effect waves-dark" href="<?= base_url("investor/files")?>" aria-expanded="false"><i class="icon-Files"></i><span class="hide-menu">Files </span></a>
+
+                        <li class="active"> <a class="has-arrow waves-effect waves-dark" href="<?= base_url()."investor/files" ?>" aria-expanded="false"><i class="icon-Files"></i><span class="hide-menu">Files </span></a>
                         </li>
-                         <li class="<?=($page_name == "InvestorRequest") ? "active" : "" ?>"> <a class="has-arrow waves-effect waves-dark <?=($page_name == "InvestorRequest") ? "active" : "" ?>" href="#" aria-expanded="false"><i class="icon-File-HorizontalText"></i><span class="hide-menu">Manage Request</span></a>
+                         <li> <a class="has-arrow waves-effect waves-dark" href="<?= base_url()."investor/manage_request" ?>" aria-expanded="false"><i class="icon-File-HorizontalText"></i><span class="hide-menu">Manage Request</span></a>
                         </li>
 
                     </ul>

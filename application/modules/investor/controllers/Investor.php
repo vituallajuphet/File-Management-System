@@ -69,8 +69,6 @@ class Investor extends MY_Controller {
 				$par["where"] = array( "tbl_user_company.user_id" => get_user_id(), "tbl_user_company.status"=>"joined" );
 				$data["comp"] = $this->MY_Model->getRows('tbl_companies',$par, "obj");
 				
-
-
       			$this->load_page('files_index',$data);
 		}
 
@@ -80,8 +78,6 @@ class Investor extends MY_Controller {
  			$data['has_header']="Request_header";
 			$data['has_footer']="includes/profile_footer";
 
-			
-			
 			// $data['has_modal']="includes/investor/modal";
 		 	$this->load_investor_page('profile',$data);
 		}
@@ -161,12 +157,16 @@ class Investor extends MY_Controller {
 		// }else{
 		// 	echo 2;
 		// }
-		
-		echo '<pre>';
-		print_r($res);
-		echo '</pre>';
+
 		exit;
 	}
 
+	public function send_message_investor(){
+		
+	}
+
+	public function request_a_file(){
+		
+	}
 
 }

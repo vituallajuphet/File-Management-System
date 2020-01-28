@@ -103,7 +103,7 @@ class emaillibrary {
                     return true;
                 }
                 else{
-                  echo $this->CI->email->print_debugger();
+               
                    return false;
                 }
         }

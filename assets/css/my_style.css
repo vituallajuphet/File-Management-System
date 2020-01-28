@@ -161,3 +161,31 @@ table.dataTable thead>tr>th {
     background-color: #c5a36f;
     border-color: #c5a36f
 }
+
+
+.profilepage .proCont { margin: 22px 0 0; color: gray;}
+.profilepage .proCont .prof{display: inline-block; vertical-align: top;}
+.profilepage .proCont .prof h3{font-size: 18px; font-weight: bold;line-height: 100%;color: #111;}
+.profilepage .proCont .prof p{}
+.profilepage .proCont  .protxt {margin: 22px  0px 0 10px;}
+.profilepage .proCont  .protxt p{font-size: 13px;margin-bottom: 0;}
+.profilepage .proCont  .protxt p span{font-weight: bold;color: #111;}
+
+.profilepage .proCont  .protxt a {color: #fff;  background: #c5a36f;  display: inline-block;  vertical-align: top;  padding: 0px 5px;  margin-left: 3px;  border-radius: 6px;font-size: 12px;  margin: 7px 0 0;}
+
+
+.profilepage .cont-prof{color: gray;}
+.profilepage .cont-prof ul{list-style: none; padding: 0; padding-left: 0px; padding-left: 10px; margin: 22px 0 0;}
+.profilepage .cont-prof ul li{font-size: 14px;margin: 3px 0 0;}
+.profilepage .cont-prof ul li span{color: #222;}
+.profilepage .cont-prof ul li a{color: #fff;  background: #c5a36f;  display: inline-block;  vertical-align: top;  padding: 0px 5px;  margin-left: 3px;  border-radius: 6px;}
+.profilepage .cont-prof ul li a:hover{text-decoration: none;opacity: .5;}
+
+.profilepage .card-body{padding: 20px 17px;}
+.profilepage .profileFields { background: #fcfae4; padding: 34px; }
+.profilepage .profileFields .form-control { font-size: 14px; height: auto; min-height: 32px; line-height: 100%; }
+
+.profilepage .profileFields h3{font-size: 18px;  font-weight: bold;}
+.profilepage .profileFields .btn-primary{background: #000a24;border-color: #000a24;}
+
+.profilepage .profileform label{font-size: 13px;}

@@ -74,6 +74,15 @@ class Investor extends MY_Controller {
       			$this->load_page('files_index',$data);
 		}
 
+		public function profile(){
+			$data["title"] ="Investor Profile";
+			$data["page_name"] ="profile";
+ 			$data['has_header']="Request_header";
+			$data['has_footer']="includes/profile_footer";
+			// $data['has_modal']="includes/investor/modal";
+		 	$this->load_investor_page('profile',$data);
+		}
+
 
 		// api request functions
 		public function get_file_requests(){

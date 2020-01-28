@@ -153,9 +153,9 @@
                                     <li>
                                         <div class="dw-user-box">
                                             <div class="u-text">
-                                                <a href="#" class="nav-profile">
+                                                <a  href="<?=base_url("investor/profile")?>" class="nav-profile">
                                                     <h4>My Profile</h4>
-                                                    <p>Dummy text only</p>
+                                                    <p>sample@email.com</p>
                                                 </a>
                                            </div>
                                     </li>

@@ -103,4 +103,22 @@
             return true;
         }
     }
+    
+    function get_logged_user($typ = "array"){
+        $ci = & get_instance();
+        if($typ== "array"){
+            return $ci->session->userdata();
+        }
+        else if($typ== "obj"){
+            return (object) $ci->session->userdata();
+        }
+        else if($typ== "json"){
+            return json_encode($ci->session->userdata());
+        }
+        exit;
+    }
+
+ `
+
+    
 ?>

@@ -26,13 +26,17 @@
         base_url:BASE_URL,
         user: <?= get_logged_user("json");?>,
         is_show_pass:false,
-        pass:""
+        pass:"",
+        companies:[]
       }
     },
     methods:{
         showpass(){
             this.is_show_pass = !this.is_show_pass
-        } 
+        },
+        showCompanies(){
+            
+        }
     },
 
     computed:{
@@ -46,7 +50,13 @@
     },
 
     mounted(){
-
+        let self = this;
+        axios.get(`${BASE_URL}investor/get_my_companies/`).then((resp)=>{
+            const res = resp.data;
+            if(res.code == 200){
+                self.companies =res.data;
+            }
+        })
     }
 
   })

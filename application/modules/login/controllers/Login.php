@@ -127,6 +127,9 @@ class Login extends MY_Controller {
 					if($res[0]->user_type =="investor" &&  $res[0]->approved == 0){
 						$msg = array( "err"=>"error", "message" => "Your account has not approved yet!" );
 					}else{
+
+						
+
 						$userdata = array(
 							"user_id"=> $res[0]->user_id,
 							"firstname"=> $res[0]->firstname,
@@ -287,7 +290,14 @@ class Login extends MY_Controller {
 		// }else{
 		// 	echo 2;
 		// }
-
+		$par["select"] = "*";
+		$par["where"] = array("tbl_user_company.user_id" => 11);
+		$par["join"] = array("tbl_companies" => "tbl_companie.company_id = tbl_user_company.company_id");
+		$res = $this->MY_Model->getRows('tbl_user_company',$par);
+		echo '<pre>';
+		print_r($res);
+		echo '</pre>';
+		exit;
 	}
 
 }

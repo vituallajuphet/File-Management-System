@@ -35,7 +35,7 @@
                                             <div class="prof protxt">
                                                 <h3>{{user.firstname +' '+ user.lastname}} </h3>
                                                 <p>Company: <span>Hapchan</span> </p> 
-                                                <div><a href="javascript">Show All</a></div>
+                                                <div><a href="javascript:;" @click="showCompanies()">Show All</a></div>
                                             </div>
                                           </div>
                                           <div class="cont-prof">
@@ -110,6 +110,13 @@
                                                                 </div>
                                                             </div>
                                                          </div>
+                                                         <div>
+                                                             <ul>
+                                                                <li v-for="comp in companies">{{comp.company_name}}</li>
+
+                                                             </ul>
+
+                                                         </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -124,4 +131,25 @@
                     <!-- ============================================================== -->
                 </div>
         </div>
-    </div>
+        
+        <!-- start modal -->
+            <div id="request-file-modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:block;" aria-hidden="true" >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h4 class="modal-title">Request a File</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body">
+                        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                            <button type="submit" name="send_request" id="send_request" form="send_request_form" class="btn btn-primary waves-effect waves-light"><i class='fas fa-file' ></i> Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- end modal comp- -->
+        </div>
+     </div>

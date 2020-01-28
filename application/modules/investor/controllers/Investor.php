@@ -79,9 +79,15 @@ class Investor extends MY_Controller {
 			$data["page_name"] ="profile";
  			$data['has_header']="Request_header";
 			$data['has_footer']="includes/profile_footer";
+
+			
+			
 			// $data['has_modal']="includes/investor/modal";
 		 	$this->load_investor_page('profile',$data);
 		}
+
+		// private function 
+
 
 
 		// api request functions
@@ -133,21 +139,34 @@ class Investor extends MY_Controller {
 				}
 				 echo json_encode($res);
 		}
-		
 
-		public function send_test(){
-			
-			// $nsg ="asdas asd asd";
-			// $res =	sendemail("prospteam@gmail.com",$nsg );
-			// if($res){
-			// 	echo 1;
-			// }
-			// else{
-			// 	echo 2;
-			// }
-
-		
+		public function get_my_companies(){
+			$response = array("code"=>204, "data"=> []);
+			$par["select"] = "*";
+			$par["where"] = array("tbl_user_company.user_id" => get_user_id(), "tbl_user_company.status" => "joined");
+			$par["join"] = array("tbl_companies" => "tbl_companies.company_id = tbl_user_company.company_id");
+			$companies = $this->MY_Model->getRows('tbl_user_company',$par, "obj");
+			if (!empty($companies)){
+				$response = array("code" =>200, "data" => $companies);
+			}
+			echo json_encode($response);
 		}
+		
+
+	// test function
+	public function test_here(){
+		// $content ="<h1>sample</h1>";
+		// if(sendemail("prospteam@gmail.com", $content)){
+		// 	echo 1;
+		// }else{
+		// 	echo 2;
+		// }
+		
+		echo '<pre>';
+		print_r($res);
+		echo '</pre>';
+		exit;
+	}
 
 
 }

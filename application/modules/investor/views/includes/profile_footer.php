@@ -1,16 +1,10 @@
-<script src="<?php echo base_url(); ?>assets/js/vue.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/axios.min.js"></script>
-
 <script>
   var BASE_URL = "<?= base_url();?>";
 </script>
 
 
 <script type="text/javascript" class="init">
-  // $(document).ready(function() {
-    
-  // } );
-
+ 
   var myapp = new Vue({
     el:"#myApp",
     
@@ -28,7 +22,7 @@
             this.is_show_pass = !this.is_show_pass
         },
         showCompanies(){
-            
+            $("#company_modal").modal();
         }
     },
 

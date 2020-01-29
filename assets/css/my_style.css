@@ -171,8 +171,9 @@ table.dataTable thead>tr>th {
 .profilepage .proCont  .protxt p{font-size: 13px;margin-bottom: 0;}
 .profilepage .proCont  .protxt p span{font-weight: bold;color: #111;}
 
-.profilepage .proCont  .protxt a {color: #fff;  background: #c5a36f;  display: inline-block;  vertical-align: top;  padding: 0px 5px;  margin-left: 3px;  border-radius: 6px;font-size: 12px;  margin: 7px 0 0;}
+.profilepage .proCont  .protxt a {color: #fff;  background: #c5a36f;  display: inline-block;  vertical-align: middle;  padding: 0px 5px;  margin-left: 3px;  border-radius: 6px;  font-size: 12px;  margin: 0px 0 0 5px;}
 
+.profilepage .proCont  .protxt a:hover{opacity: .6; text-decoration: none;}
 
 .profilepage .cont-prof{color: gray;}
 .profilepage .cont-prof ul{list-style: none; padding: 0; padding-left: 0px; padding-left: 10px; margin: 22px 0 0;}
@@ -189,3 +190,11 @@ table.dataTable thead>tr>th {
 .profilepage .profileFields .btn-primary{background: #000a24;border-color: #000a24;}
 
 .profilepage .profileform label{font-size: 13px;}
+
+
+.profilepage #company_modal .modal-dialog{max-width: 673px;}
+.profilepage #company_modal table thead{background-color: #c5a36f;color: #fff;}
+.profilepage #company_modal table th{padding: 8px;font-size: 14px;}
+.profilepage #company_modal table td { padding: 8px; }
+
+

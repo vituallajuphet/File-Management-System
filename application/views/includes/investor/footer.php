@@ -5,6 +5,9 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+    <script src="<?php echo base_url(); ?>assets/js/vue.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/axios.min.js"></script>
+
     <script src="<?php echo base_url(); ?>assets/js/module/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?php echo base_url(); ?>assets/js/module/popper.min.js"></script>

@@ -10,9 +10,6 @@
 </script>
 
 <script type="text/javascript" class="init">
-  // $(document).ready(function() {
-    
-  // } );
 
   var myapp = new Vue({
     el:"#myApp",

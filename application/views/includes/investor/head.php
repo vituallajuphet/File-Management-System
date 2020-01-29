@@ -155,7 +155,7 @@
                                             <div class="u-text">
                                                 <a  href="<?=base_url("investor/profile")?>" class="nav-profile">
                                                     <h4>My Profile</h4>
-                                                    <p>sample@email.com</p>
+                                                    <p><?= $this->session->userdata("email_address")?></p>
                                                 </a>
                                            </div>
                                     </li>

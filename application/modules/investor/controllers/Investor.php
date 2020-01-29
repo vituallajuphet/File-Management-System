@@ -75,9 +75,9 @@ class Investor extends MY_Controller {
 		public function profile(){
 			$data["title"] ="Investor Profile";
 			$data["page_name"] ="profile";
- 			$data['has_header']="Request_header";
+			 $data['has_header']="Request_header";
+			 $data['has_modal']="includes/profile_modal";
 			$data['has_footer']="includes/profile_footer";
-
 			// $data['has_modal']="includes/investor/modal";
 		 	$this->load_investor_page('profile',$data);
 		}
@@ -151,12 +151,12 @@ class Investor extends MY_Controller {
 
 	// test function
 	public function test_here(){
-		// $content ="<h1>sample</h1>";
-		// if(sendemail("prospteam@gmail.com", $content)){
-		// 	echo 1;
-		// }else{
-		// 	echo 2;
-		// }
+		$content ="<h1>sample</h1>";
+		if(sendemail("prospteam@gmail.com", $content)){
+			echo 1;
+		}else{
+			echo 2;
+		}
 
 		exit;
 	}

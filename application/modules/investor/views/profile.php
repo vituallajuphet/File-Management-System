@@ -35,8 +35,8 @@
 											</div>
 											<div class="prof protxt">
 												<h3>{{user.firstname +' '+ user.lastname}} </h3>
-												<p>Company: <span>Hapchan</span> </p>
-												<div><a href="javascript:;" @click="showCompanies()">Show All</a></div>
+												<p>Company: <a href="javascript:;" @click="showCompanies()">Show</a> </p>
+												
 											</div>
 										</div>
 										<div class="cont-prof">
@@ -144,5 +144,13 @@
 				<!-- End PAge Content -->
 				<!-- ============================================================== -->
 			</div>
+
+		<?php 
+			if(!empty($has_modal)){
+				$this->load->view($has_modal);
+			}
+		?>
+			
+
 		</div>
 </div>

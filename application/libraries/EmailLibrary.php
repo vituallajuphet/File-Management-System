@@ -8,8 +8,8 @@ class emaillibrary {
         protected $to_email ="prospteam@gmail.com";
         protected $smtp_host ="secure.emailsrvr.com";
         protected $protocol ="smtp";
-        protected $smtp_user = "onlineform18@proweaver.net";
-        protected $smtp_pass = "rKf0rD4@n1QGHTG0RY";
+        protected $smtp_user = "onlineform20@proweaver.net";
+        protected $smtp_pass = "rK2018#r0L&sit1#0nY";
         protected $smtp_port =587;
         protected $message ="sample message";
         protected $mail_type ="html";

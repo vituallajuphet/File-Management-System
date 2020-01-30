@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2020 at 10:49 AM
+-- Generation Time: Jan 30, 2020 at 10:41 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -234,7 +234,7 @@ CREATE TABLE `tbl_users` (
 INSERT INTO `tbl_users` (`user_id`, `username`, `password`, `user_status`, `user_type`, `approved`) VALUES
 (1, 'admin', '$2y$10$z/RGawkfgT9dx5AyQAjHweWeDJiOYKsTK4aw1paJji.ZShSoKaz6a', 1, 'admin', 1),
 (12, 'Kerry', '$2y$10$z/RGawkfgT9dx5AyQAjHweWeDJiOYKsTK4aw1paJji.ZShSoKaz6a', 1, 'investor', 0),
-(11, 'test', '$2y$10$qhbCs/gkEg4oG1SlWF/yTukWviTvO6HHQmBNtXO3Ywsa0yjTRK87S', 1, 'investor', 1),
+(11, 'testssss', '$2y$10$.AOJLfSN5IIfwiYj47DvXeAvzPnu.tfvQKOeN6mahTo1sAg0j.59O', 1, 'investor', 1),
 (13, 'john001', '$2y$10$RksCrxBpNlWfBQiuRqIThe7/CBhXGN.xZppUrcchcApYk609nahgy', 1, 'investor', 0),
 (14, 'webweb', '$2y$10$F2BcEULbjNaEgmwEgz4Iced1KVIPn2y6HFhuCcX0EJJUNEwsjJyAG', 1, 'investor', 0),
 (15, 'Cruiser', '$2y$10$48sdfEj7xA/1HtosA51AyeypfncKRPqYmCCbDxIPzvL3/f2dB1fFC', 1, 'investor', 0);
@@ -285,7 +285,7 @@ CREATE TABLE `tbl_user_details` (
 
 INSERT INTO `tbl_user_details` (`user_detail_id`, `user_id`, `firstname`, `lastname`, `email_address`, `contact_number`, `profile_picture`, `created_date`, `updated_date`, `company_id`) VALUES
 (1, 1, 'adminb', 'admin', 'admin@admin.com', '12345', '/asd.png', '2020-01-15 00:00:00', '2020-01-15 00:00:00', 0),
-(7, 11, 'opet', 'Leonardo', 'prospteam@gmail.com', 'Uy', '', '2020-01-16 09:25:57', '0000-00-00 00:00:00', 1),
+(7, 11, 'opets', 'Leonardo', 'prospteam@gmail.coms', '1235678', '', '2020-01-16 09:25:57', '2020-01-30 10:15:30', 1),
 (8, 12, 'Proweaver Test', 'Terry', 'example@proweaver.com', 'Uy', '', '2020-01-17 06:23:52', '0000-00-00 00:00:00', 1),
 (9, 13, 'John', 'Smith', 'john@gmail.com', '0945609', '', '2020-01-22 08:09:05', '0000-00-00 00:00:00', 0),
 (10, 14, 'webweb', 'webweb', 'webweb@test.com', 'webweb', '', '2020-01-22 08:17:39', '0000-00-00 00:00:00', 0),

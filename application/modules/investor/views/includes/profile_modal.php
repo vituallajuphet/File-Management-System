@@ -11,18 +11,14 @@
                     <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Company ID</th>
                                     <th>Company Name</th>
                                     <th>Email Address</th>
-                                    <th>Company Type</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="comp in companies">
-                                    <td>{{comp.company_id}}</td>
                                     <td>{{comp.company_name}}</td>
                                     <td>{{comp.company_email}}</td>
-                                    <td>{{comp.company_type}}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -129,11 +129,52 @@ class Investor extends MY_Controller {
 						 	}
 						    array_push($res, $approvedData[0]);
 						}else{
-							 array_push($res, $result);
+							array_push($res, $result);
 						}
 					}
 				}
 				 echo json_encode($res);
+		}
+
+		public function api_update_profile(){
+			$post = json_decode($this->input->post("fdata"));
+			$response = array("code"=>200, "data"=> []);
+			if(!empty($post)){
+				$checkUser = array( "email_address"=>$post->email_address, "username"=>$post->username, "user_id" => get_user_id());
+				if($this->user_exists($checkUser)){
+					$response = array("code"=>205, "data"=> []);
+				}
+				else{
+						$set = array(
+							"username" => $post->username,
+							"password" => password_hash($post->password, PASSWORD_DEFAULT),
+						);
+						$where= array( "user_id" => $post->user_id );
+						$this->MY_Model->update('tbl_users', $set, $where);
+						$set = array(
+							"firstname" => $post->firstname,
+							"lastname" =>  $post->lastname,
+							"email_address" =>  $post->email_address,
+							"contact_number" =>  $post->contact_number,
+							"updated_date" =>  date("Y-m-d H:i:s")
+						);
+						$this->MY_Model->update('tbl_user_details', $set, $where);
+						$userdata = array(
+							"user_id"=> $post->user_id,
+							"firstname"=>  $post->firstname,
+							"lastname"=> $post->lastname,
+							"user_type"=> $post->user_type,
+							"username"=>  $post->username,
+							"password"=> $post->password,
+							"email_address"=> $post->email_address,
+							"contact_number"=> $post->contact_number,
+						);
+						$this->session->set_userdata($userdata);
+						$response = array("code"=>200, "data"=> get_logged_user("json"));
+					}
+			}
+			
+			echo json_encode($response);
 		}
 
 		public function get_my_companies(){
@@ -147,7 +188,23 @@ class Investor extends MY_Controller {
 			}
 			echo json_encode($response);
 		}
-		
+
+
+		private function user_exists ($user){
+			$par["select"] = "*";
+			$par["join"] = array("tbl_user_details" => "tbl_user_details.user_id = tbl_users.user_id" );
+			$par["where"] = array(
+				"tbl_user_details.email_address" => $user["email_address"],
+				"tbl_users.user_id !=" => $user["user_id"],
+			);
+			$par["or_where"] = array("tbl_users.username" => $user["username"]);
+			$res=$this->MY_Model->getRows('tbl_users', $par);
+			if(!empty($res)){
+				return true;
+			}
+			return false;
+		}
+				
 
 	// test function
 	public function test_here(){

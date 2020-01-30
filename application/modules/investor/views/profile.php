@@ -56,13 +56,13 @@
 										<div class="profileFields">
 											<h3>Edit Profile</h3>
 											<div class="profileform">
-												<form class="mt-4">
+												<form class="mt-4" @submit.prevent="submit_profile_update()">
 													<div class="row">
 														<div class="col-md-4">
 															<div class="form-group">
 																<label for="#">Firstname</label>
 																<input type="text" required class="form-control"
-																	readonly v-model="user.firstname"
+																	:readonly="is_readonly" v-model="form_data.firstname"
 																	placeholder="* First Name">
 															</div>
 														</div>
@@ -70,7 +70,7 @@
 															<div class="form-group">
 																<label for="#">Lastname</label>
 																<input type="text" required class="form-control"
-																	readonly v-model="user.lastname"
+																	:readonly="is_readonly" v-model="form_data.lastname"
 																	placeholder="* Last Name">
 															</div>
 														</div>
@@ -78,7 +78,7 @@
 															<div class="form-group">
 																<label for="#">Email Address</label>
 																<input type="email" required class="form-control"
-																	readonly v-model="user.email_address"
+																	:readonly="is_readonly" v-model="form_data.email_address"
 																	placeholder="* Email Address">
 															</div>
 														</div>
@@ -86,14 +86,14 @@
 															<div class="form-group">
 																<label for="#">Contact Number</label>
 																<input type="text" class="form-control"
-																	v-model="user.contact_number" readonly
+																	v-model="form_data.contact_number" required :readonly="is_readonly"
 																	placeholder="* Contact Number">
 															</div>
 														</div>
 														<div class="col-md-4">
 															<div class="form-group">
 																<label for="#">User Type</label>
-																<input type="text" v-model="user.user_type"
+																<input type="text" required v-model="form_data.user_type"
 																	class="form-control" readonly
 																	placeholder="User type">
 															</div>
@@ -101,33 +101,33 @@
 														<div class="col-md-4">
 															<div class="form-group">
 																<label for="#">Username</label>
-																<input type="text" v-model="user.username"
-																	class="form-control" readonly
+																<input type="text" v-model="form_data.username"
+																	class="form-control" required :readonly="is_readonly"
 																	placeholder="Username">
 															</div>
 														</div>
 														<div class="col-md-4">
 															<div class="form-group">
 																<label for="#">Password</label>
-																<input type="password" v-model="user.password"
-																	class="form-control" readonly
+																<input type="password" required v-model="form_data.password"
+																	class="form-control" :readonly="is_readonly"
 																	placeholder="Password">
 															</div>
 														</div>
 														<div class="col-md-4">
 															<div class="form-group">
 																<label for="#">Confirm Password</label>
-																<input type="password" type="password"
-																	class="form-control" readonly
+																<input type="password" required v-model="con_password" type="password"
+																	class="form-control" :readonly="is_readonly"
 																	placeholder="Confirm Password">
 															</div>
 														</div>
 														<div class="col-md-12 text-right">
 															<div class="form-group frmprofilebtn-con">
-																<button type="button" class="btn btn-primary"><i
-																		class="fa fa-edit"></i> Edit</button>
-																<button type="submit" class="btn btn-primary"><i
-																		class="fa fa-check"></i> Apply Changes</button>
+																<button @click="editProfile()" type="button" class="btn btn-primary"><i
+																		class="fa fa-edit"></i> {{get_edit_btn_txt}}</button>
+																<button :disabled="is_readonly" type="submit" class="btn btn-primary"><i
+																		 class="fa fa-check"></i> Apply Changes</button>
 															</div>
 														</div>
 													</div>

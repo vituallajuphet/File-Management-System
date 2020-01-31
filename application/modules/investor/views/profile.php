@@ -30,8 +30,8 @@
 									<div class="col-md-3">
 										<div class="proCont">
 											<div class="prof">
-												<img src="<?=base_url("assets/images/placeholder.jpg")?>"
-													style="width:90px;" class="img-circle" alt="">
+												<img :src="getProfilePic" style="width:90px;" class="img-circle" alt="">
+													<button @click="showUpdateProfile()" class="btn-update-profile">Update</button>
 											</div>
 											<div class="prof protxt">
 												<h3>{{user.firstname +' '+ user.lastname}} </h3>

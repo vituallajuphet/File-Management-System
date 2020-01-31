@@ -146,8 +146,14 @@
                         <!-- ============================================================== -->
                         <!-- Profile -->
                         <!-- ============================================================== -->
+                         <?php 
+                            $profic = "dummyprofile.png";
+                            if($this->session->userdata("profile_picture") != ""){
+                                $profic = $this->session->userdata("profile_picture");
+                            }
+                        ?>
                         <li class="nav-item dropdown u-pro">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="<?=base_url("investor/profile")?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>assets/images/dummyprofile.png" alt="user" class="" /> <span class="hidden-md-down"><?= $this->session->userdata("firstname") ." ". $this->session->userdata("lastname"); ?> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="<?=base_url("investor/profile")?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>assets/images/profiles/<?=$profic;?>" alt="user" class="" /> <span class="hidden-md-down"><?= $this->session->userdata("firstname") ." ". $this->session->userdata("lastname"); ?> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <ul class="dropdown-user">
                                     <li>

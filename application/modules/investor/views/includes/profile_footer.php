@@ -1,5 +1,63 @@
+
+<script src="<?php echo base_url(); ?>assets/js/croppie.js"></script>
 <script>
   var BASE_URL = "<?= base_url();?>";
+</script>
+
+<script>
+var $uploadCrop,$uploadCrop2;
+  $(document).ready(function(){
+    
+    $('#view_upload-demo').hide();
+    $('#view_remove_btn').hide();
+    $('input[name="view_upload_image"]').on('click',function(){
+        $('#view_upload-demo').show();
+        $('img[name="view_test_profile"]').hide();
+        $('#view_remove_btn').show();
+    });
+
+    $('#view_remove_btn').on('click',function(){
+        $('#view_upload-demo').hide();
+        $('#view_upload_image').val('');
+        $('img[name="view_test_profile"]').show();
+        $('#view_remove_btn').hide();
+
+    });
+
+    function readFile(input,layout) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                if (layout=='view_upload-demo') {
+                    $uploadCrop2.croppie('bind', {
+                        url: e.target.result
+                    });
+                }else{
+                    $uploadCrop.croppie('bind', {
+                        url: e.target.result
+                    });
+                }
+                $(layout).addClass('ready');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $uploadCrop2 = $('#view_upload-demo').croppie({
+        viewport: {
+            width: 200,
+            height: 200,
+            type: 'circle'
+        },
+        boundary: {
+            width: 220,
+            height: 222
+        }
+    });
+
+    $('#view_upload_image').on('change', function () { readFile(this,'view_upload-demo'); });
+
+  })
 </script>
 
 
@@ -27,8 +85,30 @@
         showCompanies(){
             $("#company_modal").modal();
         },
+        showUpdateProfile(){
+            $("#updateprofile").modal()
+        },
         editProfile(){
           this.is_readonly = !this.is_readonly;
+        },
+        submit_profile_pic(){
+          $uploadCrop2.croppie('result', {
+              type: 'canvas',
+              size: 'original',
+          }).then(function (resp) {
+              let profile_img = resp;    
+              let fdata = new FormData();
+              fdata.append("profile_img", profile_img)
+              axios.post(`${BASE_URL}investor/api_update_propic`, fdata).then(res =>{
+                  if(res.data.code==200){
+                      Swal.fire( '', 'Updated Successfully', 'success' ).then(ress =>{ 
+                        if(ress.value){ location.reload(); } 
+                      }) 
+                  }else{
+                    Swal.fire( '', 'Updated Failed', 'error' )
+                  }
+              })
+          });
         },
         submit_profile_update(){
           let self = this;
@@ -82,6 +162,14 @@
             return "Edit";
           }
           return "Cancel";
+        },
+        getProfilePic(){
+            let path = this.base_url+"assets/images/profiles/"
+            if(this.user.profile_picture == ""){
+              return path+"placeholder.jpg";
+            }
+           return path+this.user.profile_picture
+            
         }
     },
 
@@ -97,3 +185,5 @@
 
   })
 </script>
+
+

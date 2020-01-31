@@ -127,9 +127,6 @@ class Login extends MY_Controller {
 					if($res[0]->user_type =="investor" &&  $res[0]->approved == 0){
 						$msg = array( "err"=>"error", "message" => "Your account has not approved yet!" );
 					}else{
-
-						
-
 						$userdata = array(
 							"user_id"=> $res[0]->user_id,
 							"firstname"=> $res[0]->firstname,
@@ -138,6 +135,7 @@ class Login extends MY_Controller {
 							"username"=> $res[0]->username,
 							"approved"=> $res[0]->approved,
 							"password"=> $password,
+							"profile_picture"=> $res[0]->profile_picture,
 							"user_status"=> $res[0]->user_status,
 							"email_address"=> $res[0]->email_address,
 							"contact_number"=> $res[0]->contact_number,

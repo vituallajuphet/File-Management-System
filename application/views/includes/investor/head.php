@@ -19,6 +19,7 @@
     <link href="<?php echo base_url(); ?>assets/css/color/default.css" id="theme" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/my_style.css" id="theme" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/my_media.css" id="theme" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/croppie.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -146,8 +147,15 @@
                         <!-- ============================================================== -->
                         <!-- Profile -->
                         <!-- ============================================================== -->
+
+                        <?php 
+                            $profic = "dummyprofile.png";
+                            if($this->session->userdata("profile_picture") != ""){
+                                $profic = $this->session->userdata("profile_picture");
+                            }
+                        ?>
                         <li class="nav-item dropdown u-pro">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>assets/images/dummyprofile.png" alt="user" class="" /> <span class="hidden-md-down"><?= $this->session->userdata("firstname") ." ". $this->session->userdata("lastname"); ?> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>assets/images/profiles/<?=$profic;?>" alt="user" class="" /> <span class="hidden-md-down"><?= $this->session->userdata("firstname") ." ". $this->session->userdata("lastname"); ?> &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <ul class="dropdown-user">
                                     <li>
@@ -181,7 +189,7 @@
                     <ul id="sidebarnav">
                         <li> <a class="has-arrow waves-effect waves-dark" href="<?= base_url("investor/files")?>" aria-expanded="false"><i class="icon-Files"></i><span class="hide-menu">Files </span></a>
                         </li>
-                         <li class="<?=($page_name == "InvestorRequest") ? "active" : "" ?>"> <a class="has-arrow waves-effect waves-dark <?=($page_name == "InvestorRequest") ? "active" : "" ?>" href="#" aria-expanded="false"><i class="icon-File-HorizontalText"></i><span class="hide-menu">Manage Request</span></a>
+                         <li class="<?=($page_name == "InvestorRequest") ? "active" : "" ?>"> <a class="has-arrow waves-effect waves-dark <?=($page_name == "InvestorRequest") ? "active" : "" ?>" href="<?= base_url("investor/manage_request")?>" aria-expanded="false"><i class="icon-File-HorizontalText"></i><span class="hide-menu">Manage Request</span></a>
                         </li>
 
                     </ul>

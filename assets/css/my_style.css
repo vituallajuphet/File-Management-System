@@ -198,3 +198,13 @@ table.dataTable thead>tr>th {
 .profilepage #company_modal table td { padding: 8px; }
 
 
+.profilepage .prof{position: relative;}
+.profilepage .prof .btn-update-profile { position: absolute; left: 0; right: 0; display: none; margin: 0 auto; bottom: 22px; border-radius: 5px; background: #c5a36f; color: #fff; font-size: 15px; border: none; opacity: 0.8; }
+
+.profilepage .proCont .prof:hover .btn-update-profile{display: block;transition: all ease 1s;}
+#view_remove_btn{margin-right: 0!important; position: absolute; right: 34px!important;float: none;margin: 0!important;}
+
+.croppie-container{height: auto!important;}
+.update-form .btn-primary{background: #000a24; border-color: #000a24;}
+#view_upload_image{font-size: 13px;}
+.view_test_profile{width: 200px; height: 200px; border-radius: 50%; display: block; margin: 0 auto 30px; border: 2px #e1dcdc solid;}

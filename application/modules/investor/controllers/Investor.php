@@ -218,6 +218,29 @@ class Investor extends MY_Controller {
 		exit;
 	}
 
+	public function api_update_propic(){
+		   $post = $this->input->post();
+		   $resp = array("code"=>204, "data" => []);
+		   if(!empty($post)){
+			    $orig = $this->session->userdata("profile_picture");
+				$path = "./assets/images/profiles/";
+				$image_parts = explode(";base64,", $post['profile_img']);
+				$image_type_aux = explode("image/", $image_parts[0]);
+				$image_type = $image_type_aux[1];
+				$image_base64 = base64_decode($image_parts[1]);
+				$file_name = "profile-".time(). '.png';
+				$file = $path . $file_name;
+				file_put_contents($file, $image_base64);
+				$set = array( "profile_picture" => $file_name );
+				$where = array("user_id" => get_user_id());
+				$this->MY_Model->update('tbl_user_details', $set, $where);
+				$this->session->set_userdata("profile_picture", $file_name);
+				unlink($path.$orig);
+				$resp = array("code"=>200, "data" => $file_name);
+		   }
+		   echo json_encode($resp);
+	}	
+
 	public function send_message_investor(){
 		
 	}

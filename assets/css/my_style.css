@@ -208,3 +208,6 @@ table.dataTable thead>tr>th {
 .update-form .btn-primary{background: #000a24; border-color: #000a24;}
 #view_upload_image{font-size: 13px;}
 .view_test_profile{width: 200px; height: 200px; border-radius: 50%; display: block; margin: 0 auto 30px; border: 2px #e1dcdc solid;}
+
+#updateprofile input[type="file"] + label { color: white; background-color: #000a24; display: inline-block; width: 100%; padding: 4px; padding-left: 4px; padding-left: 9px; padding-left: 9px; padding-left: 9px; font-size: 15px; border-radius: 5px; border: 1px solid #575454; padding-left: 20px; cursor: pointer; position: relative; max-width: 134px; }
+#updateprofile input[type="file"] { width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }

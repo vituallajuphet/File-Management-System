@@ -6,22 +6,38 @@
 
 <script>
 var $uploadCrop,$uploadCrop2;
+  let photoChanged = false;
   $(document).ready(function(){
     
+  
+
     $('#view_upload-demo').hide();
     $('#view_remove_btn').hide();
+
     $('input[name="view_upload_image"]').on('click',function(){
-        $('#view_upload-demo').show();
+       showfile();
+    });
+    $("#upload_label").click(function(){
+      showfile();
+    })
+    $('#view_upload_image').on("change", function(){
+      photoChanged = true;
+    })
+
+    function showfile(){
+       $('#view_upload-demo').show();
         $('img[name="view_test_profile"]').hide();
         $('#view_remove_btn').show();
-    });
+    }
+
+  
 
     $('#view_remove_btn').on('click',function(){
         $('#view_upload-demo').hide();
         $('#view_upload_image').val('');
         $('img[name="view_test_profile"]').show();
         $('#view_remove_btn').hide();
-
+      photoChanged = false;
     });
 
     function readFile(input,layout) {
@@ -92,23 +108,27 @@ var $uploadCrop,$uploadCrop2;
           this.is_readonly = !this.is_readonly;
         },
         submit_profile_pic(){
-          $uploadCrop2.croppie('result', {
-              type: 'canvas',
-              size: 'original',
-          }).then(function (resp) {
-              let profile_img = resp;    
-              let fdata = new FormData();
-              fdata.append("profile_img", profile_img)
-              axios.post(`${BASE_URL}investor/api_update_propic`, fdata).then(res =>{
-                  if(res.data.code==200){
-                      Swal.fire( '', 'Updated Successfully', 'success' ).then(ress =>{ 
-                        if(ress.value){ location.reload(); } 
-                      }) 
-                  }else{
-                    Swal.fire( '', 'Updated Failed', 'error' )
-                  }
-              })
-          });
+          if(photoChanged){
+            $uploadCrop2.croppie('result', {
+                type: 'canvas',
+                size: 'original',
+            }).then(function (resp) {
+                let profile_img = resp;    
+                let fdata = new FormData();
+                fdata.append("profile_img", profile_img)
+                axios.post(`${BASE_URL}investor/api_update_propic`, fdata).then(res =>{
+                    if(res.data.code==200){
+                        Swal.fire( '', 'Updated Successfully', 'success' ).then(ress =>{ 
+                          if(ress.value){ location.reload(); } 
+                        }) 
+                    }else{
+                      Swal.fire( '', 'Updated Failed', 'error' )
+                    }
+                })
+            });
+          }else{
+            Swal.fire( '', 'Please select a picture first', 'error' )
+          }
         },
         submit_profile_update(){
           let self = this;

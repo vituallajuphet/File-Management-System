@@ -44,10 +44,11 @@
                 <!-- start -->
                         <div class="my-0 row form-group">
                             <div class="col-md-12">
-                                <button class="btn waves-effect waves-light btn-outline-danger" id="view_remove_btn" type="button" style=" float: right; margin-right: 40px; "><i class="fa fa-times"></i> </button>
+                                <button class="btn waves-effect waves-light btn-outline-danger" id="view_remove_btn" type="button" style=" float: right; margin-right: 40px; "><i class="fa fa-times"></i> Reset</button>
                                 <img class="view_test_profile" name="view_test_profile" :src="getProfilePic" style="display:block;margin-bottom:10px;" alt="profile_image">
                                 <div id="view_upload-demo"></div>
-                                <input type="file" name="view_upload_image" id="view_upload_image" />
+                                <input type="file" class= name="view_upload_image" id="view_upload_image" />
+                                <label for="view_upload_image" id="upload_label"><i class="fa fa-upload"></i>  Browse file</label>
                                 <input type="hidden" id="view_imagebase64" name="view_imagebase64" />
                             </div>
                         </div>

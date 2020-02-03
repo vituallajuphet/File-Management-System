@@ -8,12 +8,14 @@ class Home extends MY_Controller {
 			if($user_type == "investor"){
 				redirect(base_url("investor"));
 			}
-			if($user_type == "admin"){
+			else if($user_type == "admin"){
 				redirect(base_url("admin"));
+			}
+			else if($user_type == "cbmc"){
+				redirect(base_url("cbmc"));
 			}
 			else{
 				redirect(base_url("login"));
-
 			}
 
 		}

@@ -189,23 +189,21 @@ class Investor extends MY_Controller {
 			echo json_encode($response);
 		}
 
-
 		private function user_exists ($user){
-			$par["select"] = "*";
-			$par["join"] = array("tbl_user_details" => "tbl_user_details.user_id = tbl_users.user_id" );
-			$par["where"] = array(
-				"tbl_user_details.email_address" => $user["email_address"],
-				"tbl_users.user_id !=" => $user["user_id"],
-			);
-			$par["or_where"] = array("tbl_users.username" => $user["username"]);
-			$res=$this->MY_Model->getRows('tbl_users', $par);
-			if(!empty($res)){
-				return true;
-			}
-			return false;
-		}
+            $par["select"] = "*";
+            $user_id = $user['user_id'];
+            $email = $user['email_address'];
+            $username = $user['username'];
+            $par["join"] = array("tbl_user_details" => "tbl_user_details.user_id = tbl_users.user_id" );
+            $par["where"] = "tbl_users.user_id != '$user_id' AND (tbl_users.username = '$username' OR tbl_user_details.email_address = '$email')";
+            $res=$this->MY_Model->getRows('tbl_users', $par);
+            echo $this->db->last_query();
+            if(!empty($res)){
+                  return true;
+            }
+            return false;
+      }
 				
-
 	// test function
 	public function test_here(){
 		$content ="<h1>sample</h1>";

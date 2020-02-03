@@ -49,6 +49,12 @@ class MY_Controller extends MX_Controller {
 		$this->load->view('includes/admin/footer',$data);
 	}
 
+	public function load_cbmc_page($page,$data = array(), $component =""){
+		$this->load->view('includes/cbmc/header',$data);
+		$this->load->view($page,$data);
+		$this->load->view('includes/admin/footer',$data);
+	}
+
 	
 
 }

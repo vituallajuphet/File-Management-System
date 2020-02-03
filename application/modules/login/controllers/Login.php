@@ -127,6 +127,14 @@ class Login extends MY_Controller {
 					if($res[0]->user_type =="investor" &&  $res[0]->approved == 0){
 						$msg = array( "err"=>"error", "message" => "Your account has not approved yet!" );
 					}else{
+
+						$getDept = [];
+						if($res[0]->user_type =="cbmc"){
+							$user_id = $res[0]->user_id;
+							$par["where"] = "user_id = '$user_id' AND status = 1";
+							$getDept = getData("tbl_user_dept_details", $par);
+						}
+
 						$userdata = array(
 							"user_id"=> $res[0]->user_id,
 							"firstname"=> $res[0]->firstname,
@@ -134,6 +142,7 @@ class Login extends MY_Controller {
 							"user_type"=> $res[0]->user_type,
 							"username"=> $res[0]->username,
 							"approved"=> $res[0]->approved,
+							"department"=> $getDept,
 							"password"=> $password,
 							"profile_picture"=> $res[0]->profile_picture,
 							"user_status"=> $res[0]->user_status,
@@ -148,7 +157,8 @@ class Login extends MY_Controller {
 							redirect(base_url("files"));
 						}elseif ($res[0]->user_type =="admin"){
 							redirect(base_url("admin"));
-							
+						}else{
+							redirect(base_url());
 						}
 						
 					}
@@ -297,5 +307,6 @@ class Login extends MY_Controller {
 		echo '</pre>';
 		exit;
 	}
+
 
 }

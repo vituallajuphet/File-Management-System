@@ -117,5 +117,22 @@
         }
         exit;
     }
+
+
+    function my_profile($key="user_id"){
+        $ci = & get_instance();
+       $res=  $ci->session->userdata($key);
+        if(!empty($res)){
+            return $res;
+        }
+        return "";
+    }
+
+    function getData($tbl ="", $par = array()){
+        $ci = & get_instance();
+        $res=  $ci->MY_Model->getRows($tbl, $par);
+        return $res;
+    }
+    
     
 ?>

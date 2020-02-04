@@ -35,15 +35,13 @@
 											</div>
 											<div class="prof protxt">
 												<h3>{{user.firstname +' '+ user.lastname}} </h3>
-										
-												
+												<span class="profile_usertype">Department User</span>
 											</div>
 										</div>
 										<div class="cont-prof">
 											<ul>
-												<li>Contact #: <span>{{user.contact_number}}</span></li>
+												<li>Contact No: <span>{{user.contact_number}}</span></li>
 												<li>Email Address: <span>{{user.email_address}}</span></li>
-												<li>User Type: <span>Department User</span></li>
 												<li>Department(s): 
                                                     <span v-for="(dept, index) in user.department">{{dept.departments}}{{(user.department.length > index + 1 ? ', ': '')}} </span>
                                                 </li>

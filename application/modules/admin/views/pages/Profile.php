@@ -35,15 +35,14 @@
 											</div>
 											<div class="prof protxt">
 												<h3>{{user.firstname +' '+ user.lastname}} </h3>
-										
+												<span class="profile_usertype">Administrator</span>
 												
 											</div>
 										</div>
 										<div class="cont-prof">
 											<ul>
-												<li>Contact: <span>{{user.contact_number}}</span></li>
+												<li>Contact No.: <span>{{user.contact_number}}</span></li>
 												<li>Email Address: <span>{{user.email_address}}</span></li>
-												<li>User Type: <span>{{user.user_type}}</span></li>
 												<li>Username: <span>{{user.username}}</span></li>
 												<li>Password: <span>{{getpass}}</span><a @click="showpass()"
 														href="javascript:;">{{(is_show_pass ? 'Hide' : 'Show')}}</a>

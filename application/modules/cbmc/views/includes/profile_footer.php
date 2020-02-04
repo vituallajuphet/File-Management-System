@@ -115,7 +115,7 @@ var $uploadCrop,$uploadCrop2;
                 let profile_img = resp;    
                 let fdata = new FormData();
                 fdata.append("profile_img", profile_img)
-                axios.post(`${BASE_URL}admin/api_update_profilepic`, fdata).then(res =>{
+                axios.post(`${BASE_URL}cbmc/api_update_profilepic`, fdata).then(res =>{
                     if(res.data.code==200){
                         Swal.fire( '', 'Updated Successfully', 'success' ).then(ress =>{ 
                           if(ress.value){ location.reload(); } 
@@ -143,7 +143,7 @@ var $uploadCrop,$uploadCrop2;
               if(self.form_data.password == self.con_password){
                  let fdata = new FormData();
                 fdata.append("fdata", JSON.stringify(this.form_data));
-                axios.post(`${BASE_URL}admin/api_update_profile`, fdata).then(res =>{
+                axios.post(`${BASE_URL}cbmc/api_update_profile`, fdata).then(res =>{
                   if(res.data.code == 200){
                     self.user = JSON.parse(res.data.data)
                     self.form_data = JSON.parse(res.data.data)

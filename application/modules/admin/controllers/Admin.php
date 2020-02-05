@@ -25,11 +25,20 @@ class Admin extends MY_Controller {
       }
 
       public function manage_users(){
+            $data["title"] ="Admin - Manage Users";
+            $data["page_name"] ="manage_users";
+            $data['has_header']="header_index.php";
+            $data['has_footer']="includes/manage_user_footer";
+            $this->load_admin_page('pages/manage_users',$data);
+      }
 
-      } 
       
-      public function manage_department_users(){
-            
+      public function department_user(){
+            $data["title"] ="Admin - department users";
+            $data["page_name"] ="department_users";
+            $data['has_header']="header_index.php";
+            $data['has_footer']="includes/manage_dept_user_footer";
+            $this->load_admin_page('pages/manage_dept_user',$data);
       }
       // ----------------------------------------private functionm ---------------------
 
@@ -112,5 +121,22 @@ class Admin extends MY_Controller {
             }
             echo json_encode($response);
       }
+
+      public  function api_getuser($usertype){
+            $response = array("code"=>204, "data"=> []);
+            if(!empty($usertype)){
+                  $par["select"] = "*";
+                  $par["where"] = "tbl_users.user_type = '$usertype'";
+                  $par["join"] = array( 'tbl_user_details' => 'tbl_users.user_id = tbl_user_details.user_id' );
+
+                  $res = getData('tbl_users', $par);
+                  if(!empty($res)){
+                      $response = array("code"=>200, "data"=> $res);
+                  }
+            }
+            echo $this->db->last_query();
+            echo json_encode($response);
+      }
+      // 
 
 }

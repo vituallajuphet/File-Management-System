@@ -8,7 +8,7 @@
                 <div class="container-fluid">
                     <div class="row page-titles">
                         <div class="col-md-5 align-self-center">
-                            <h3 class="text-themecolor">Manage Request
+                            <h3 class="text-themecolor">Manage Users
                         </h3>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?=base_url()?>">Home</a></li>

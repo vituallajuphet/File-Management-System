@@ -3,3 +3,11 @@
 .profile_usertype{font-size: 13px;}
 
 .profilepage .proCont .prof h3{margin: 0;}
+
+.admin-table th{font-size: 15px;color: #fff;}
+.admin-table th{font-size: 15px;color: #fff;}
+
+.admin-table .td-manage-user{}
+.admin-table .td-manage-user a:first-child{color: #222;}
+.admin-table .td-manage-user a:nth-child(2){color: #000a24;}
+.admin-table .td-manage-user a:last-child{color: red;}

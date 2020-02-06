@@ -24,8 +24,7 @@
       getRequestData(){
         return new Promise((resolve, reject)=> {
           axios.get(`${BASE_URL}admin/api_getuser/subsidiary`).then((res)=>{
-            this.users = res.data;
-            resolve(200)
+            this.users = res.data.data;
           })
         }) 
       }

@@ -16,7 +16,7 @@
                             </ol>
                         </div>
                         <div class="col-md-7 align-self-center text-right d-none d-md-block">
-                            <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#responsive-modal" ><i class='fas fa-user' ></i> Add User</button>
+                            <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#responsive-modal" ><i class='fas fa-plus' ></i> Add User</button>
                         </div>
                     </div>
                     <!-- ============================================================== -->
@@ -39,41 +39,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- <tr v-for="(req) in file_requests" :key="req.request_id" :class="(req.request_status == 'Completed' ? 'row-completed' : '')">
-                                        <td>{{req.request_id}}</td>
-                                        <td>{{req.file_title }}</td>
-                                        <td>{{req.request_status}}</td>
-                                        <td>{{req.company_name}}</td>
-                                        <td>{{req.department}}</td>
-                                        <td>{{req.requested_date}}</td>
-                                        <td class="action_td">
-                                          <a href="javascript:;" title="View Details"><i class="fas fa-eye"></i></a>
-                                          <a href="javascript:;" title="View Details"><i class="fas fa-pencil"></i></a>
-                                          <a href="javascript:;" title="View Details"><i class="fas fa-trash"></i></a>
-                                        </td>
-                                    </tr> -->
-                                    <tr>
-                                        <td>1</td>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>Hap Chan</td>
-                                        <td>sample@asd.com</td>
+                                    <tr v-for="user in users"> 
+                                        <td>{{user.user_id}}</td>
+                                        <td>{{user.firstname}}</td>
+                                        <td>{{user.lastname}}</td>
+                                        <td>{{user.company_name}}</td>
+                                        <td>{{user.email_address}}</td>
                                         <td class="td-manage-user">
-                                            <a href="javascript:;" title="View Details"><i class="fas fa-eye"></i></a>
-                                          <a href="javascript:;" title="View Details"><i class="fas fa-edit"></i></a>
-                                          <a href="javascript:;" title="View Details"><i class="fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>James</td>
-                                        <td>Doe</td>
-                                        <td>Proweaver</td>
-                                        <td>proweaver@asd.com</td>
-                                        <td class="td-manage-user">
-                                            <a href="javascript:;" title="View Details"><i class="fas fa-eye"></i></a>
-                                          <a href="javascript:;" title="View Details"><i class="fas fa-edit"></i></a>
-                                          <a href="javascript:;" title="View Details"><i class="fas fa-trash"></i></a>
+                                            <a href="javascript:;" @click="view_user(user.user_id)" title="View Details"><i class="fas fa-eye"></i></a>
+                                          <a href="javascript:;" @click="show_modal_edit(user.user_id)" title="Edit"><i class="fas fa-edit"></i></a>
+                                          <a href="javascript:;" @click="show_delete_user(user.user_id)" title="Delete"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>

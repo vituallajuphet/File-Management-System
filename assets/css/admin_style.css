@@ -11,3 +11,7 @@
 .admin-table .td-manage-user a:first-child{color: #222;}
 .admin-table .td-manage-user a:nth-child(2){color: #000a24;}
 .admin-table .td-manage-user a:last-child{color: red;}
+
+.admin-table .td-manage-user a{display: inline-block;margin: 0 4px;}
+
+#myTable_wrapper select[name="myTable_length"]{padding: 5px;}

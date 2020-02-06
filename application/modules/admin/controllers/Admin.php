@@ -122,19 +122,20 @@ class Admin extends MY_Controller {
             echo json_encode($response);
       }
 
-      public  function api_getuser($usertype){
+      public function api_getuser($usertype){
             $response = array("code"=>204, "data"=> []);
             if(!empty($usertype)){
                   $par["select"] = "*";
-                  $par["where"] = "tbl_users.user_type = '$usertype'";
-                  $par["join"] = array( 'tbl_user_details' => 'tbl_users.user_id = tbl_user_details.user_id' );
-
-                  $res = getData('tbl_users', $par);
+                  $par["where"] = "u.user_type = '$usertype'";
+                  $par["join"] = array( 
+                        'tbl_user_details ud' => 'u.user_id = ud.user_id', 
+                        'tbl_companies c' => 'c.company_id = ud.company_id'  
+                  );
+                  $res = getData('tbl_users u', $par);
                   if(!empty($res)){
                       $response = array("code"=>200, "data"=> $res);
                   }
             }
-            echo $this->db->last_query();
             echo json_encode($response);
       }
       // 

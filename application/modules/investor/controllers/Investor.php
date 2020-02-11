@@ -14,41 +14,23 @@ class Investor extends MY_Controller {
 			$data["page_name"] ="InvestorRequest";
  			$data['has_header']="Request_header";
 			$data['has_footer']="Request_footer";
-			$data['has_modal']="includes/investor/modal";
+			$data['has_modal']="includes/file_modal";
+
+			$data['all_departments']=get_departments();
+			$data['company_email']= get_my_company();
+
 		 	$this->load_investor_page('Request_index',$data);
 		}
 		// files page here
 		public function files(){
-			if (isset($_POST['send_message'])) {
-					// $this->emaillibrary->sendmail($_POST['message-text']);
-					$message_content ="Investor name:".$this->session->userdata('firstname')." ".$this->session->userdata('lastname')."<br>";
-					$message_content .="Message:".$_POST['message'];
-					$department = explode("|",$_POST['department']);
-					sendemail($department[0], $message_content,"For ".$department[1],null,null,$_POST['your_email'],false);
-					$this->session->set_flashdata("flash_data", array( "err"=>"success", "message" => "Message Sent"));
-					$res = array('msg'=>'Message sent', 'err' => false);
-					$this->session->set_flashdata('results', $res );
-				
-			}
-			if (isset($_POST['send_request'])) {
-				$res=$this->db->
-				select('*')->
-				from('tbl_companies')->
-				where('company_id',$this->session->userdata('company_id'))->
-				get()->result();
-				sendemail($res->company_email,'A user requested for a doocument.');
-
-				$this->MY_Model->insert('tbl_requests', $set);
-
-			}
-
 				$data['has_header']="files_index_header.php";
 				$data['has_footer']="files_index_footer.php";
-				$data['has_modal']="includes/investor/modal";
+				$data['has_modal']="includes/file_modal";
 			    $data["title"] = "Files";
 				$this->load->library('myconfig');
 				$data['viewable_files']=$this->myconfig->viewable_files();
-				$data['all_departments']=$this->myconfig->all_departments;
+
+				$data['all_departments']=get_departments();
 
 				// GETTING FILES
 				$data['files_rows']=$this->db->
@@ -58,10 +40,7 @@ class Investor extends MY_Controller {
 					join('tbl_companies','tbl_companies.company_id = tbl_files.file_company_id')->
 					get()->result();
 
-				$data['company_email']=$this->db->
-					select("*")->
-					where("company_id",$this->session->userdata('company_id'))->
-					from('tbl_companies')->get()->result();
+				$data['company_email']= get_my_company();
 
 				// get companies
 				$par["select"] = "*";
@@ -82,9 +61,52 @@ class Investor extends MY_Controller {
 		 	$this->load_investor_page('profile',$data);
 		}
 
+		public function contact_department(){
+				// $this->emaillibrary->sendmail($_POST['message-text']);
+				$department = explode("|",$_POST['department']);
+				$message_content = "For: $department[1] Department<br/>";
+				$message_content .="Investor name: ".$this->session->userdata('firstname')." ".$this->session->userdata('lastname')."<br><br>";
+				$message_content .="Message: ".$_POST['message'];
+				
+				sendemail($department[0], $message_content,"Contact Department",null,null,$_POST['your_email'],false);
+				$this->session->set_flashdata("flash_data", array( "err"=>"success", "message" => "Message Sent"));
+				$res = array('msg'=>'Message sent', 'err' => false);
+				$this->session->set_flashdata('results', $res );
+				redirect(base_url("investor/files"));
+		}
+
+		public function send_request_file(){
+			$post = $this->input->post();
+			if(!empty($post)){
+				$dept_email = $post["department"];
+				$title = $post["title"];
+				$comment = $post["comment"];
+				$par["select"] ="*";
+				$par["where"] ="company_id = ".$post['company']."";
+				$resp = getData("tbl_companies", $par, "obj");
+				$comp_email = $resp[0]->company_email;
+
+				$dept = explode("|",$post['department']);
+
+				sendemail($comp_email,'An investor requested for a document.');
+				sendemail($dept[0],'A investor requested for a document.');
+				$set = array(
+					"comment"=> $comment,
+					"company_id"=> $post['company'],
+					"department"=> $dept[1],
+					"file_title"=> $title,
+					"requested_date"=> date("Y-m-d"),
+					"request_status"=> "Pending",
+				);
+				$this->MY_Model->insert('tbl_requests', $set);
+				$this->session->set_flashdata("flash_data", array( "err"=>"success", "message" => "Request Sent"));
+				$msgs = array('msg'=>'Request Sent', 'err' => false);
+				$this->session->set_flashdata('results', $msgs );
+				redirect(base_url("investor/files"));
+			}
+		}
+
 		// private function 
-
-
 
 		// api request functions
 		public function get_file_requests(){
@@ -189,6 +211,8 @@ class Investor extends MY_Controller {
 			echo json_encode($response);
 		}
 
+		
+
 		private function user_exists ($user){
             $par["select"] = "*";
             $user_id = $user['user_id'];
@@ -197,7 +221,6 @@ class Investor extends MY_Controller {
             $par["join"] = array("tbl_user_details" => "tbl_user_details.user_id = tbl_users.user_id" );
             $par["where"] = "tbl_users.user_id != '$user_id' AND (tbl_users.username = '$username' OR tbl_user_details.email_address = '$email')";
             $res=$this->MY_Model->getRows('tbl_users', $par);
-            echo $this->db->last_query();
             if(!empty($res)){
                   return true;
             }

@@ -13,14 +13,15 @@ var $uploadCrop,$uploadCrop2;
     $('#view_upload-demo').hide();
     $('#view_remove_btn').hide();
 
-    $('input[name="view_upload_image"]').on('click',function(){
-       showfile();
-    });
-    $("#upload_label").click(function(){
-      showfile();
-    })
+    // $('input[name="view_upload_image"]').on('click',function(){
+    //    showfile();
+    // });
+    // $("#upload_label").click(function(){
+    //   showfile();
+    // })
     $('#view_upload_image').on("change", function(){
       photoChanged = true;
+    showfile(); 
     })
 
     function showfile(){
@@ -102,6 +103,7 @@ var $uploadCrop,$uploadCrop2;
         },
         showUpdateProfile(){
             $("#updateprofile").modal()
+            $('#view_remove_btn').trigger("click")
         },
         editProfile(){
           this.is_readonly = !this.is_readonly;

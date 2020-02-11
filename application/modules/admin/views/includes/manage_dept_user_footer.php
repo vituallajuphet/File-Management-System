@@ -23,8 +23,8 @@
     methods:{
       getRequestData(){
         return new Promise((resolve, reject)=> {
-          axios.get(`${BASE_URL}admin/api_getuser/cbmc`).then((res)=>{
-            this.users = res.data;
+          axios.get(`${BASE_URL}admin/api_dept_user/cbmc`).then((res)=>{
+            this.users = res.data.data;
             resolve(200)
           })
         }) 

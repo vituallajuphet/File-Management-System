@@ -128,11 +128,37 @@
         return "";
     }
 
-    function getData($tbl ="", $par = array()){
+    function getData($tbl ="", $par = array(), $r = "array"){
         $ci = & get_instance();
-        $res=  $ci->MY_Model->getRows($tbl, $par);
+        $res=  $ci->MY_Model->getRows($tbl, $par, $r);
         return $res;
     }
+
+    function get_companies(){
+        $ci = & get_instance();
+        $par["select"] ="*";
+        $par["where"] ="company_type='subsidiary'";
+        $res=  $ci->MY_Model->getRows("tbl_companies", $par, "obj");
+        return $res;
+    }
+
+    function get_departments(){
+        $ci = & get_instance();
+        $par["select"] ="*";
+        $par["where"] ="dept_status=1";
+        $res=  $ci->MY_Model->getRows("tbl_cmbc_dept", $par, "obj");
+        return $res;
+    }
+
+     function get_my_company(){
+            $ci = & get_instance();
+			$response = array("code"=>204, "data"=> []);
+			$par["select"] = "*";
+			$par["where"] = array("tbl_user_company.user_id" => get_user_id(), "tbl_user_company.status" => "joined");
+			$par["join"] = array("tbl_companies" => "tbl_companies.company_id = tbl_user_company.company_id");
+			$companies =  $ci->MY_Model->getRows('tbl_user_company',$par, "obj");
+			return $companies;
+	}
     
     
 ?>

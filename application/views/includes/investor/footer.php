@@ -39,6 +39,13 @@
   			$this->load->view($has_footer);
       }
     ?>
+
+    <?php
+          $msg = $this->session->flashdata("flash_data");
+          if(isset($msg)){
+            $this->load->view("modules/swal", $msg);
+          }
+      ?>
 </body>
 
 </html>

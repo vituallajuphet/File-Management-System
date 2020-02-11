@@ -19,6 +19,7 @@
     <link href="<?php echo base_url(); ?>assets/css/color/default.css" id="theme" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/my_style.css" id="theme" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/my_media.css" id="theme" rel="stylesheet">
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

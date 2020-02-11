@@ -8,15 +8,15 @@
                 <div class="container-fluid">
                     <div class="row page-titles">
                         <div class="col-md-5 align-self-center">
-                            <h3 class="text-themecolor">Manage Users
+                            <h3 class="text-themecolor">Manage Company Users
                         </h3>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="<?=base_url()?>">Home</a></li>
-                                <li class="breadcrumb-item active">Manage Users</li>
+                                <li class="breadcrumb-item active">Manage Company Users</li>
                             </ol>
                         </div>
                         <div class="col-md-7 align-self-center text-right d-none d-md-block">
-                            <button type="button" class="btn btn-theme " data-toggle="modal" data-target="#responsive-modal" ><i class='fas fa-plus' ></i> Add User</button>
+                            <button type="button" @click="show_add_modal()" class="btn btn-theme" data-toggle="modal" data-target="#responsive-modal" ><i class='fas fa-plus' ></i> Add User</button>
                         </div>
                     </div>
                     <!-- ============================================================== -->
@@ -26,8 +26,7 @@
                     <div class="col-12">
                         <div class="card">
                         <div class="card-body">
-                            <table id="myTable" class="table   dt-responsive nowrap admin-table" style="width:100%">
-                            <!-- <table id="example" class="table " style="width:100%"> -->
+                            <table id="myTable" class="table dt-responsive nowrap admin-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>User ID</th>
@@ -61,6 +60,13 @@
                     <!-- End PAge Content -->
                     <!-- ============================================================== -->
                 </div>
+                <!-- modal -->
+                <?php 
+                    if(!empty($has_mod)){
+                        $this->load->view($has_mod);
+                    }
+                ?>
+            <!-- end modal -->
         </div>
     </div>
 </div>

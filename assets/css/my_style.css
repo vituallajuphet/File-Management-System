@@ -211,3 +211,5 @@ table.dataTable thead>tr>th {
 
 #updateprofile input[type="file"] + label { color: white; background-color: #000a24; display: inline-block; width: 100%; padding: 4px; padding-left: 4px; padding-left: 9px; padding-left: 9px; padding-left: 9px; font-size: 15px; border-radius: 5px; border: 1px solid #575454; padding-left: 20px; cursor: pointer; position: relative; max-width: 134px; }
 #updateprofile input[type="file"] { width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1; }
+
+#responsive-modal #send_message, #send_request { color: #fff; background-color: #c5a36f; border-color: #c5a36f; }

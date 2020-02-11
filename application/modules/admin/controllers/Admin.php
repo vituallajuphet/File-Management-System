@@ -27,6 +27,7 @@ class Admin extends MY_Controller {
       public function manage_users(){
             $data["title"] ="Admin - Manage Users";
             $data["page_name"] ="manage_users";
+            $data["has_mod"] ="modal/manage_user_mod";
             $data['has_header']="header_index.php";
             $data['has_footer']="includes/manage_user_footer";
             $this->load_admin_page('pages/manage_users',$data);
@@ -39,6 +40,43 @@ class Admin extends MY_Controller {
             $data['has_header']="header_index.php";
             $data['has_footer']="includes/manage_dept_user_footer";
             $this->load_admin_page('pages/manage_dept_user',$data);
+      }
+
+      public function companies(){
+            $data["title"] ="Admin - Companies";
+            $data["page_name"] ="companies";
+            $data['has_header']="header_index.php";
+            // $data['has_footer']="includes/manage_dept_user_footer";
+            // $this->load_admin_page('pages/manage_dept_user',$data);
+            $this->load_admin_page('includes/development',$data);
+
+      }
+
+      public function manage_request(){
+            $data["title"] ="Admin - Requests";
+            $data["page_name"] ="file_request";
+            $data['has_header']="header_index.php";
+            // echo "This page is under development";
+            // $data['has_footer']="includes/manage_dept_user_footer";
+            $this->load_admin_page('includes/development',$data);
+      }
+      
+      public function manage_files(){
+            $data["title"] ="Admin - manage files";
+            $data["page_name"] ="manage_files";
+            $data['has_header']="header_index.php";
+            $this->load_admin_page('includes/development',$data);
+            // $data['has_footer']="includes/manage_dept_user_footer";
+            // $this->load_admin_page('pages/manage_dept_user',$data);
+      }
+
+      public function investors(){
+            $data["title"] ="Admin - Investors";
+            $data["page_name"] ="investors";
+            $data['has_header']="header_index.php";
+            // echo "This page is under development";
+            // $data['has_footer']="includes/manage_dept_user_footer";
+            $this->load_admin_page('includes/development',$data);
       }
       // ----------------------------------------private functionm ---------------------
 
@@ -135,6 +173,33 @@ class Admin extends MY_Controller {
                   if(!empty($res)){
                       $response = array("code"=>200, "data"=> $res);
                   }
+            }
+            echo json_encode($response);
+      }
+
+      public function api_dept_user($usertype){
+            $response = array("code"=>204, "data"=> []);
+            if(!empty($usertype)){
+                  $par["select"] = "*";
+                  $par["where"] = "u.user_type = '$usertype'";
+                  $par["join"] = array( 'tbl_user_details ud' => 'u.user_id = ud.user_id' );
+                  $res = getData('tbl_users u', $par, "obj");
+                  if(!empty($res)){
+                      $c = 0;
+                      foreach ($res as $key => $value) {
+                        $user_id = $res[$c]->user_id;
+                        $par2["select"] = "*";
+                        $par2["where"] = "user_id =  $user_id";
+                        $dept = getData('tbl_user_dept_details ', $par2);
+                        if(!empty($dept)){
+                          $res[$c]->departments = $dept;   
+                        }
+                      }
+                      $response = array("code"=>200, "data"=> $res);
+                  }
+
+
+
             }
             echo json_encode($response);
       }
